@@ -5,6 +5,9 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         ArrayList<Empleado> lista = new ArrayList<>();
+        ArrayList<Empleado> ad = new ArrayList<>();
+        ArrayList<Empleado> ho = new ArrayList<>();
+        ArrayList<Empleado> ve = new ArrayList<>();
 
         int opcion;
 
@@ -14,11 +17,14 @@ public class Main {
             System.out.println("2. Registrar empleado de ventas");
             System.out.println("3. Registrar empleado por horas");
             System.out.println("4. Mostrar todos los empleados");
-            System.out.println("5. Buscar empleado por ID");
-            System.out.println("6. Calcular salario final");
-            System.out.println("7. Aumentar salario base");
-            System.out.println("8. Mostrar empleados mayores de edad");
-            System.out.println("9. Salir");
+            System.out.println("5. Mostrar empleados Administrativos");
+            System.out.println("6. Mostrar empleados por horas");
+            System.out.println("7. Mostrar empleados de ventas");
+            System.out.println("8. Buscar empleado por ID");
+            System.out.println("9. Calcular salario final");
+            System.out.println("10. Aumentar salario base");
+            System.out.println("11. Mostrar empleados mayores de edad");
+            System.out.println("12. Salir");
             System.out.print("Opción: ");
             opcion = sc.nextInt();
 
@@ -38,7 +44,9 @@ public class Main {
                     double bonificacion = sc.nextDouble();
 
                     lista.add(new EmpleadoAdministrativo(idA, nombreA, edadA, salarioA, bonificacion));
+                    ad.add(new EmpleadoAdministrativo(idA, nombreA, edadA, salarioA, bonificacion));
                     break;
+
 
                 case 2:
                     System.out.print("ID: ");
@@ -56,6 +64,7 @@ public class Main {
                     double comision = sc.nextDouble();
 
                     lista.add(new EmpleadoVentas(idV, nombreV, edadV, salarioV, ventas, comision));
+                    ve.add(new EmpleadoVentas(idV, nombreV, edadV, salarioV, ventas, comision));
                     break;
 
                 case 3:
@@ -74,6 +83,7 @@ public class Main {
                     double valor = sc.nextDouble();
 
                     lista.add(new EmpleadoHoras(idH, nombreH, edadH, salarioH, horas, valor));
+                    ho.add(new EmpleadoHoras(idH, nombreH, edadH, salarioH, horas, valor));
                     break;
 
                 case 4:
@@ -83,6 +93,27 @@ public class Main {
                     break;
 
                 case 5:
+                    for (Empleado e : ad) {
+                        System.out.println(e);
+                    }
+
+                    break;
+
+                case 6:
+                    for (Empleado e : ho) {
+                        System.out.println(e);
+                    }
+
+                    break;
+
+                case 7:
+                    for (Empleado e : ve) {
+                        System.out.println(e);
+                    }
+                    break;
+
+
+                case 8:
                     System.out.print("Ingrese ID: ");
                     int idBuscar = sc.nextInt();
 
@@ -93,7 +124,7 @@ public class Main {
                     }
                     break;
 
-                case 6:
+                case 9:
                     System.out.print("Ingrese ID: ");
                     int idSalario = sc.nextInt();
 
@@ -106,13 +137,12 @@ public class Main {
                             encontrado = true;
                         }
                     }
-
                     if (!encontrado) {
                         System.out.println("Empleado no encontrado");
                     }
                     break;
 
-                case 7:
+                case 10:
                     System.out.print("Ingrese ID: ");
                     int idAumento = sc.nextInt();
 
@@ -135,7 +165,7 @@ public class Main {
                     }
                     break;
 
-                case 8:
+                case 11:
                     for (Empleado e : lista) {
                         if (e.getEdad() >= 18) {
                             System.out.println(e);
@@ -143,19 +173,18 @@ public class Main {
                     }
                     break;
 
-                case 9:
+                case 12:
                     System.out.println("Saliendo...");
                     break;
 
                 default:
                     System.out.println("Opción inválida");
-
                     break;
 
 
 
             }
 
-        } while (opcion != 9);
+        } while (opcion != 12);
     }
 }
